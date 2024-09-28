@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main() {
-  std::cout << "Introduce un numero: ";
+  std::cout << "Introduce un numero: "; 
   int x{};
   std::cin >> x;
   std::cout << "Introduce otro numero: ";
