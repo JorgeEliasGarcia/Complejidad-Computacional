@@ -16,6 +16,10 @@
 
 // Método para resolver la función de proyección.
 int FuncionProyeccion::Resolver(std::vector<int> argumentos) {
+  if (argumentos.size() != unsigned(tamanyo_)) { // Comprobamos que el número de argumentos sea el correcto.
+    std::cerr << "Error: el número de argumentos no coincide con el tamaño del vector." << std::endl;
+    exit(EXIT_SUCCESS);
+  }
   if (indice_ < 0 || indice_ >= tamanyo_) {
     std::cerr << "Error: El índice está fuera de rango." << std::endl;
     exit(EXIT_SUCCESS);

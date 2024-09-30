@@ -7,27 +7,24 @@
   Práctica 1: Implementación de Funciones Primitivas Recursivas
   @autor: Jorge Elías García
   @correo: alu0101472294@ull.es
-  @brief suma.h: Clase para la implementación de la función suma.
+  @brief potencia.h: Clase para la implementación de la función potencia. 
   @bug No hay bug conocidos 
 
 */
 
-#ifndef SUMA_H
-#define SUMA_H
+#ifndef POTENCIA_H
+#define POTENCIA_H
 
 #include "funcion_primitiva_recursiva.h"
-#include "funcion_proyeccion.h"
-#include "funcion_sucesor.h"
-#include "../Operaciones/composicion.h"
+#include "producto.h"
 
-// Declaramos la clase FuncionSuma que hereda de FuncionPrimitivaRecursiva
-class Suma : public FuncionPrimitivaRecursiva {
+// Declaración de la clase Potencia que hereda de FuncionPrimitivaRecursiva
+class Potencia : public FuncionPrimitivaRecursiva {
  public:
- Suma() {}; // Constructor
+  Potencia() {}; // Constructor
 
-  // Método para resolver la función suma.
+  // Método para resolver la función potencia.
   int Resolver(std::vector<int> args) override;
-
 };
 
-#endif
+#endif // POTENCIA_H

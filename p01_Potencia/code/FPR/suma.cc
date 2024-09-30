@@ -15,7 +15,20 @@
 #include "suma.h"
 
 // Método para resolver la función suma, usando funciones recursivas primitivas.
-int FuncionSuma::Resolver(std::vector<int> args) {
+int Suma::Resolver(std::vector<int> args) {
+  if (args.size() != 2) { // Comprobamos que la función suma solo admite dos argumentos.
+    std::cerr << "Error: la función suma solo admite dos argumentos." << std::endl;
+    exit(EXIT_SUCCESS);
+  }
   FuncionPrimitivaRecursiva::IncrementarLlamadasRecursivas(); // Incrementamos el número de llamadas recursivas
+  int primer_operando = args[0];
+  int segundo_operando = args[1];
   // Identificamos el caso base
+  if (segundo_operando == 0) {
+    return FuncionProyeccion(0, 1).Resolver({primer_operando}); // Utilizamos la función proyección para devolver el primer operando.
+  } else {  // En este caso, entramos en la recursividad
+    const std::vector<int> kHSuma = {primer_operando, segundo_operando - 1, Resolver({primer_operando, segundo_operando - 1})}; 
+    // Devolvemos la composición de la función sucesor con la función proyección indice 2 y tamaño. Los argumentos para ejecutar la proyección será kHSuma. 
+    return Composicion(kHSuma).Resolver(new FuncionSucesor(), {new FuncionProyeccion(2, 3)}); // Llamada recursiva
+  }
 }

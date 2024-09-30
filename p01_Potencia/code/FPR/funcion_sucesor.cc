@@ -12,18 +12,13 @@
 
 */
 
-#ifndef FUNCION_SUCESOR_H
-#define FUNCION_SUCESOR_H
+#include "funcion_sucesor.h"
 
-#include "funcion_primitiva_recursiva.h"
-
-// Declaramos la clase FuncionSucesor que hereda de FuncionPrimitivaRecursiva
-class FuncionSucesor : public FuncionPrimitivaRecursiva {
- public:
-  FuncionSucesor() {}; // Constructor
-
-  // Método para resolver la función de sucesor.
-  int Resolver(std::vector<int> argumento) override; 
-};
-
-#endif // FUNCION_SUCESOR_H
+// Método para resolver la función de sucesor.
+int FuncionSucesor::Resolver(std::vector<int> argumento) {
+  if (argumento.size() != 1) { // Comprobamos que el número de argumentos sea 1.
+    std::cerr << "Error: la función sucesor recibe un único argumento." << std::endl;
+    exit(EXIT_SUCCESS);
+  }
+  return argumento[0] + 1; // Devolvemos el argumento incrementado en 1.
+}

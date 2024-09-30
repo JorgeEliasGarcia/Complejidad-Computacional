@@ -21,11 +21,12 @@
 class FuncionPrimitivaRecursiva {
  public: 
   FuncionPrimitivaRecursiva() {}; // Constructor por defecto
-
   // Función para resolver la función primitiva recursiva. Recibe un vector de enteros, ya que cada fpr puede tener un número variable de argumentos.
   virtual int Resolver(std::vector<int>) = 0; 
+  // Métodos para obtener el número de llamadas recursivas realizadas.
+  int GetNumeroLlamadasRecursivas() {return numero_llamadas_recursivas_;}; // Método para obtener el número de llamadas recursivas realizadas.
 
- protected: 
+ protected:
   void IncrementarLlamadasRecursivas() {numero_llamadas_recursivas_++;}; // Método para incrementar el número de llamadas recursivas.
 
  private: 

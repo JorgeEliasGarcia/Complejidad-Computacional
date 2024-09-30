@@ -12,19 +12,13 @@
 
 */
 
-#ifndef FUNCION_NULA_H
-#define FUNCION_NULA_H
+#include "funcion_nula.h"
 
-#include "funcion_primitiva_recursiva.h"
-
-// Declaramos la clase FuncionNula que hereda de FuncionPrimitivaRecursiva
-class FuncionNula : public FuncionPrimitivaRecursiva {
- public:
-  FuncionNula() {}; // Constructor
-
-  // Método para resolver la función nula.
-  int Resolver(std::vector<int> args) override; 
-
-};
-
-#endif  // FUNCION_NULA_H
+// Método para resolver la función nula.
+int FuncionNula::Resolver(std::vector<int> args) {
+  if (args.size() != 1) { // Comprobamos que el número de argumentos sea 0.
+    std::cerr << "Error: la función nula no recibe argumentos." << std::endl;
+    exit(EXIT_SUCCESS);
+  }
+  return 0; // Devolvemos 0, ya que la función nula siempre devuelve 0.
+}
