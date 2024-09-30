@@ -15,10 +15,10 @@
 #include "funcion_proyeccion.h"
 
 // Método para resolver la función de proyección.
-int FuncionProyeccion::Resolver(std::vector<int> argumentos, int indice, int tamanyo) const {
-  if (indice < 0 || indice >= tamanyo) {
+int FuncionProyeccion::Resolver(std::vector<int> argumentos) {
+  if (indice_ < 0 || indice_ >= tamanyo_) {
     std::cerr << "Error: El índice está fuera de rango." << std::endl;
     exit(EXIT_SUCCESS);
   }
-  return argumentos[indice];
+  return argumentos[indice_];
 }

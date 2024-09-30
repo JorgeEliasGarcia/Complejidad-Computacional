@@ -14,8 +14,7 @@
 
 #include "main.h"
 #include "FPR/funcion_primitiva_recursiva.h"
-#include "FPR/funcion_proyeccion.h"
-#include "FPR/funcion_sucesor.h"
+#include "FPR/suma.h"
 #include "FPR/funcion_nula.h"
 
 // FUnción principal del programa
@@ -23,15 +22,15 @@ int main(int argc, char *argv[]) {
   ModoUso(argc, argv);
   int base = std::stoi(argv[1]);
   int exponente = std::stoi(argv[2]);
-  FuncionPrimitivaRecursiva* fpr = new FuncionProyeccion();
+  FuncionPrimitivaRecursiva* fpr = new FuncionProyeccion(2, 3);
   std::vector<int> argumentos = {1, 2, 3, 4};
-  int resultado = fpr->Resolver(argumentos, 2, 4);
+  int resultado = fpr->Resolver(argumentos);
   std::cout << "El resultado es: " << resultado << std::endl;
   fpr = new FuncionSucesor();
-  resultado = fpr->Resolver(exponente);
+  resultado = fpr->Resolver(argumentos);
   std::cout << "El resultado es: " << resultado << std::endl;
   fpr = new FuncionNula();
-  resultado = fpr->Resolver();
+  resultado = fpr->Resolver(argumentos);
   std::cout << "El resultado es: " << resultado << std::endl;
   return 0;
 }

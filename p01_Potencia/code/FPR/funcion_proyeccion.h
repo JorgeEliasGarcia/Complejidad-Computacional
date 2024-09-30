@@ -20,14 +20,15 @@
 // Declaramos la clase FuncionProyeccion que hereda de FuncionPrimitivaRecursiva
 class FuncionProyeccion : public FuncionPrimitivaRecursiva {
  public:
-  FuncionProyeccion() {}; // Constructor
+  // Constructor. Guardamos el índice al que quiere acceder y el tamaño del vector. 
+  FuncionProyeccion(int indice, int tamanyo): indice_{indice}, tamanyo_{tamanyo} {}; // Constructor
 
   // Método para resolver la función de proyección.
-  int Resolver(std::vector<int> argumentos, int indice, int tamanyo) const override;
+  int Resolver(std::vector<int> argumentos) override;
 
-  // Sobrecargamos los métodos Resolver de la clase base, pero no los usaremos.
-  int Resolver() const override { return 0; };
-  int Resolver(int argumento) const override { return 0; };
+ private: 
+  int indice_; 
+  int tamanyo_;
 };
 
 #endif  // FUNCION_PROYECCION_H

@@ -23,11 +23,7 @@ class FuncionSucesor : public FuncionPrimitivaRecursiva {
   FuncionSucesor() {}; // Constructor
 
   // Método para resolver la función de sucesor.
-  int Resolver(int argumento) const override { return argumento + 1; };
-  
-  // Sobrecargamos los métodos Resolver de la clase base, pero no los usaremos.
-  int Resolver() const override { return 0; };
-  int Resolver(std::vector<int> argumentos, int indice, int tamanyo) const override { return 0; };
+  int Resolver(std::vector<int> argumento) override { return argumento[0] + 1; };
 };
 
 #endif // FUNCION_SUCESOR_H

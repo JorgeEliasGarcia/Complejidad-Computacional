@@ -22,12 +22,13 @@ class FuncionPrimitivaRecursiva {
  public: 
   FuncionPrimitivaRecursiva() {}; // Constructor por defecto
 
-  // Función para resolver la función primitiva recursiva. Debemos sobrecargarla varias veces, pues cada función primitiva recursiva tiene un número distinto de argumentos.
-  virtual int Resolver() const = 0; // Será sobrescrita por la clase FuncionNula. 
-  virtual int Resolver(int argumento) const = 0; // Será sobrescrita por la clase FuncionSucesor.
-  virtual int Resolver(std::vector<int> argumentos, int indice, int tamanyo) const = 0; // Será sobrescrita por la clase FuncionProyeccion.
+  // Función para resolver la función primitiva recursiva. Recibe un vector de enteros, ya que cada fpr puede tener un número variable de argumentos.
+  virtual int Resolver(std::vector<int>) = 0; 
 
  protected: 
+  void IncrementarLlamadasRecursivas() {numero_llamadas_recursivas_++;}; // Método para incrementar el número de llamadas recursivas.
+
+ private: 
   static int numero_llamadas_recursivas_; // Número de llamadas recursivas realizadas.
 }; 
 

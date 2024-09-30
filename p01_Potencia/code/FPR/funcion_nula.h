@@ -23,11 +23,8 @@ class FuncionNula : public FuncionPrimitivaRecursiva {
   FuncionNula() {}; // Constructor
 
   // Método para resolver la función nula.
-  int Resolver() const override { return 0; };
+  int Resolver(std::vector<int> args) override { return 0; };
 
-  // Sobrecargamos los métodos Resolver de la clase base, pero no los usaremos.
-  int Resolver(int argumento) const override { return 0; };
-  int Resolver(std::vector<int> argumentos, int indice, int tamanyo) const override { return 0; };
 };
 
 #endif  // FUNCION_NULA_H
