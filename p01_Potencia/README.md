@@ -13,7 +13,7 @@ Las clases hijas codificadas, podemos entenderlas como "dos grupos".
 Se han implementado las tres funciones recursivas básicas como clases hijas. Por lo tanto, encontramos las clases: **FuncionNula, FuncionSucesor y FuncionProyeccion.** Todas estas corroborarán que se han invocado con los argumentos correctos, como ha sido mencionado anteriormente. En el caso de la función proyección, el índice y el tamaño se guardan como atributos privados. 
 A partir de estas tres clases, se ha ido construyendo el resto del programa, ya que a partir de este conjunto de funciones se construyen funciones computables más complejas. 
 
-## Funciones Primitivas Recursivas para el cálculo.
+### Funciones Primitivas Recursivas para el cálculo.
 
 En este segundo grupo, encontramos las clases que han sido empleadas para realizar el propio cálculo de la potencia. **Para ello, he codificado las clases Suma, Producto y Potencia.** De esta manera, la clase Producto se ayudará de la clase Suma y la clase Potencia de la clase Producto. 
 
