@@ -8,12 +8,12 @@ Por otro lado, debemos calcular el número de llamadas recursivas. ´
 Para poder implementar la potencia(x, y), he hecho uso de una jerarquía de clases, donde todas heredan de la **clase base abstracta FuncionPrimitvaRecursiva**. En esta encontramos un método virtual Resolver, el cual recibirá un array de enteros, para que de esta manera no tener que sobreescribir la función ninguna vez. No obstante, **cada función primitiva recursiva, corroborará que el número de elementos recibidos es el correcto.** Por ejemplo, por definición la función nula es: z(x) = 0, por lo que la clase FuncionNula en su método resolver corroborará que el array recibido contiene obligatoriamente un solo elemento. 
 Las clases hijas codificadas, podemos entenderlas como "dos grupos". 
 
-### Funciones Recursivas Básicas
+###   - Funciones Recursivas Básicas
 
 Se han implementado las tres funciones recursivas básicas como clases hijas. Por lo tanto, encontramos las clases: **FuncionNula, FuncionSucesor y FuncionProyeccion.** Todas estas corroborarán que se han invocado con los argumentos correctos, como ha sido mencionado anteriormente. En el caso de la función proyección, el índice y el tamaño se guardan como atributos privados. 
 A partir de estas tres clases, se ha ido construyendo el resto del programa, ya que a partir de este conjunto de funciones se construyen funciones computables más complejas. 
 
-### Funciones Primitivas Recursivas para el cálculo.
+###   - Funciones Primitivas Recursivas para el cálculo.
 
 En este segundo grupo, encontramos las clases que han sido empleadas para realizar el propio cálculo de la potencia. **Para ello, he codificado las clases Suma, Producto y Potencia.** De esta manera, la clase Producto se ayudará de la clase Suma y la clase Potencia de la clase Producto. 
 
@@ -31,11 +31,11 @@ Para calcular el número de llamadas recursivas, utilizamos un atributo privado 
 
 Para poder hacer uso de las operaciones de las funciones primitivas básicas, he codificado la clase Composición y la clase Combinación, puesto que ambas operaciones son necesarias para implementar el programa. 
 
-### Combinación 
+###   - Combinación 
 
 La clase Combinacion contiene un atributo privado con los argumentos, pues en la operación de combinación devolveremos un array de Funciones Primitivas Recursivas, donde ambas funciones tienen que ser llamadas con los mismos argumentos.  Consecuentemente, a la hora de resolver **recibiremos por parámetros dos Funciones Primitivas Recursivas y devolveremos un array con ambas, donde las dos serán llamadas con los mismos argumentos definidos en el constructor de la clase Combinacion.**
 
-### Composición 
+###   - Composición 
 
 La clase Composición, al igual que la combinación, contiene un argumento privado con los argumentos. Consecuentemente, a la hora de resolver **recibiremos una Función Primitiva Recursiva y un array de Funciones Primitivas Recursivas. Iremos guardando en un vector los resultados de las funciones recibidas por parámetro en el array, llamando a todas ellas con los argumentos definidos en el constructor de la clase Combinacion. Finalmente, devolveremos el valor de llamar a la función recibida como primer parámetro con todos los resultados de las funciones recibidas en el array como segundo parámetro.** 
 
