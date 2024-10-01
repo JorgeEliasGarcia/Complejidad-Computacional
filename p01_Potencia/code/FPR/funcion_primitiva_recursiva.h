@@ -30,7 +30,7 @@ class FuncionPrimitivaRecursiva {
   void IncrementarLlamadasRecursivas() {numero_llamadas_recursivas_++;}; // Método para incrementar el número de llamadas recursivas.
 
  private: 
-  static int numero_llamadas_recursivas_; // Número de llamadas recursivas realizadas.
+  static long int numero_llamadas_recursivas_; // Número de llamadas recursivas realizadas.
 }; 
 
 #endif  // FUNCION_PRIMITIVA_RECURSIVA_H

@@ -15,6 +15,7 @@
 #include "composicion.h"
 
 // Método para resolver la operación de composición. Recibirá una función y un vector de funciones. Los argumentos para todos las funciones del array son los mismos por definición. 
+// LLamaremos a la función 1 con todos los resultados de las funciones del vector pasado por parámetros. Para ello, primero almacenamos los resultados de las funciones en un vector auxiliar.
 int Composicion::Resolver(FuncionPrimitivaRecursiva* funcion1, std::vector<FuncionPrimitivaRecursiva*> funciones) {
   std::vector<int> resultados_funciones; // Vector para almacenar los resultados de las funciones
   for (unsigned i {0}; i < funciones.size(); i++) {

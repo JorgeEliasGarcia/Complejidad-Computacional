@@ -14,7 +14,7 @@
 
 #include "combinacion.h"
 
-// Método para resolver la operación de combinación. Para ello, se resuelven las dos funciones primitivas recursivas con los mismos argumentos y se devuelven en un vector.
+// Método para resolver la operación de combinación. Para ello, se devuelven las dos funciones primitivas recursivas llamadas con los mismos argumentos en un mismo vector.
 std::vector<FuncionPrimitivaRecursiva*> Combinacion::Resolver(FuncionPrimitivaRecursiva* funcion1, FuncionPrimitivaRecursiva* funcion2) {
   std::vector<FuncionPrimitivaRecursiva*> resultado;
   resultado.push_back(funcion1);

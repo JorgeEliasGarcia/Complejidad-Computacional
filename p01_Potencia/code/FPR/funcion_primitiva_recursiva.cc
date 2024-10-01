@@ -14,4 +14,4 @@
 
 #include "funcion_primitiva_recursiva.h"
 
-int FuncionPrimitivaRecursiva::numero_llamadas_recursivas_ = 0; // Inicializamos el número de llamadas recursivas a 0.
+long int FuncionPrimitivaRecursiva::numero_llamadas_recursivas_ = 0; // Inicializamos el número de llamadas recursivas a 0.

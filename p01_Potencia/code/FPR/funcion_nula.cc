@@ -14,7 +14,7 @@
 
 #include "funcion_nula.h"
 
-// Método para resolver la función nula.
+// Método para resolver la función nula. Esta deverá recibir un vector con un solo elemento, pues la definición de la función nula es z(x) = 0.
 int FuncionNula::Resolver(std::vector<int> args) {
   if (args.size() != 1) { // Comprobamos que el número de argumentos sea 0.
     std::cerr << "Error: la función nula no recibe argumentos." << std::endl;

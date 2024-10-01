@@ -14,7 +14,7 @@
 
 #include "funcion_sucesor.h"
 
-// Método para resolver la función de sucesor.
+// Método para resolver la función de sucesor. Esta deverá recibir un vector con un solo elemento, pues la definición de la función sucesor es s(x) = x + 1.
 int FuncionSucesor::Resolver(std::vector<int> argumento) {
   if (argumento.size() != 1) { // Comprobamos que el número de argumentos sea 1.
     std::cerr << "Error: la función sucesor recibe un único argumento." << std::endl;

@@ -13,11 +13,7 @@
 */
 
 #include "main.h"
-#include "FPR/funcion_primitiva_recursiva.h"
-#include "FPR/producto.h"
-#include "FPR/suma.h"
 #include "FPR/potencia.h"
-#include "FPR/funcion_nula.h"
 
 // FUnción principal del programa
 int main(int argc, char *argv[]) {

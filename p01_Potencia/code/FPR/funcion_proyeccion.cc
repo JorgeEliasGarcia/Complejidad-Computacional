@@ -14,13 +14,14 @@
 
 #include "funcion_proyeccion.h"
 
-// Método para resolver la función de proyección.
+// Método para resolver la función de proyección. Esta recibirá un array de enteros. Este array deberá tener un tamaño igual al definnido en el constructor de la clase. 
+// Se devolverá el valor que se encuentre en la posición indicada por el índice.
 int FuncionProyeccion::Resolver(std::vector<int> argumentos) {
   if (argumentos.size() != unsigned(tamanyo_)) { // Comprobamos que el número de argumentos sea el correcto.
     std::cerr << "Error: el número de argumentos no coincide con el tamaño del vector." << std::endl;
     exit(EXIT_SUCCESS);
   }
-  if (indice_ < 0 || indice_ >= tamanyo_) {
+  if (indice_ < 0 || indice_ >= tamanyo_) { // Comprobamos que el índice esté dentro del rango.
     std::cerr << "Error: El índice está fuera de rango." << std::endl;
     exit(EXIT_SUCCESS);
   }
