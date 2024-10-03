@@ -20,5 +20,6 @@ int FuncionSucesor::Resolver(std::vector<int> argumento) {
     std::cerr << "Error: la función sucesor recibe un único argumento." << std::endl;
     exit(EXIT_SUCCESS);
   }
+  FuncionPrimitivaRecursiva::IncrementarNumeroLlamadasFuncion(); // Incrementamos el número de llamadas a funciones
   return argumento[0] + 1; // Devolvemos el argumento incrementado en 1.
 }

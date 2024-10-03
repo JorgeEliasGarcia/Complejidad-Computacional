@@ -20,5 +20,6 @@ int FuncionNula::Resolver(std::vector<int> args) {
     std::cerr << "Error: la función nula no recibe argumentos." << std::endl;
     exit(EXIT_SUCCESS);
   }
+  FuncionPrimitivaRecursiva::IncrementarNumeroLlamadasFuncion(); // Incrementamos el número de llamadas a funciones
   return 0; // Devolvemos 0, ya que la función nula siempre devuelve 0.
 }

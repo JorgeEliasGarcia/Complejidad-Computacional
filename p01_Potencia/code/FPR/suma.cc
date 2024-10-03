@@ -20,7 +20,7 @@ int Suma::Resolver(std::vector<int> args) {
     std::cerr << "Error: la función suma solo admite dos argumentos." << std::endl;
     exit(EXIT_SUCCESS);
   }
-  FuncionPrimitivaRecursiva::IncrementarLlamadasRecursivas(); // Incrementamos el número de llamadas recursivas
+  FuncionPrimitivaRecursiva::IncrementarNumeroLlamadasFuncion(); // Incrementamos el número de llamadas a funciones
   int primer_operando = args[0];
   int segundo_operando = args[1];
   // Identificamos el caso base

@@ -25,5 +25,6 @@ int FuncionProyeccion::Resolver(std::vector<int> argumentos) {
     std::cerr << "Error: El índice está fuera de rango." << std::endl;
     exit(EXIT_SUCCESS);
   }
+  FuncionPrimitivaRecursiva::IncrementarNumeroLlamadasFuncion(); // Incrementamos el número de llamadas a funciones
   return argumentos[indice_];
 }

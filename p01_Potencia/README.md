@@ -1,7 +1,7 @@
 # PRÁCTICA 1: Implementación de Funciones Primitivas Recursivas
 
 En esta práctica  implementaremos un programa que calcule la función potencia(x , y) como una función primitiva recursiva. Consecuentemente, solo podremos hacer uso de funciones primitivas recursivas (FPR) y de las operaciones permitidas. 
-Por otro lado, debemos calcular el número de llamadas recursivas. ´
+Por otro lado, debemos calcular el número de llamadas a funciones. 
 
 ## Funciones Primitivas Recursivas
 
@@ -23,9 +23,9 @@ En este segundo grupo, encontramos las clases que han sido empleadas para realiz
 
 3. En último lugar, la potencia. El caso base, cuando y == 0, **devolveremos la composición de la función sucesor con la función nula, pasando x como argumento. De esta manera, obtendremos un uno.** Debemos pasar el x como argumento por definición de la función nula, pues aunque siempre devuelva 0, su definición es z(x) = 0. En caso contrario, **simplemente debemos repetir el proceso del producto, pero en vez de devolver la composición de la función suma, devolvemos la composición de la función producto con el resultado de la operación de combinación del primer y tercer elemento del vector (x, y - 1, potencia(x, y  - 1))** 
 
-## Número Llamadas recursivas 
+## Número Llamadas a Funciones 
 
-Para calcular el número de llamadas recursivas, utilizamos un atributo privado y estático de la clase base (FuncionPrimitivaRecursiva). De esta manera, **cada vez que nos adentramos en la función Resolver de alguna de las clases suma, producto o potencia, incrementamos en uno dicho contador.**
+Para calcular el número de llamadas a funciones, utilizamos un atributo privado y estático de la clase base (FuncionPrimitivaRecursiva). De esta manera, **cada vez que nos adentramos en la función Resolver de cualquiera de las clases hijas, incrementamos en uno dicho contador.** Por lo tanto se incrementará cuando se entre en la función Resolver de las clases: FuncionNula, FuncionSucesor, FuncionProyeccion, Suma, Producto y Potencia. 
 
 ## Operaciones 
 

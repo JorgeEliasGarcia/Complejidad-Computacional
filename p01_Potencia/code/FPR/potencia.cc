@@ -20,7 +20,7 @@ int Potencia::Resolver(std::vector<int> args) {
     std::cerr << "Error: la función potencia solo admite dos argumentos." << std::endl;
     exit(EXIT_SUCCESS);
   }
-  FuncionPrimitivaRecursiva::IncrementarLlamadasRecursivas(); // Incrementamos el número de llamadas recursivas
+  FuncionPrimitivaRecursiva::IncrementarNumeroLlamadasFuncion(); // Incrementamos el número de llamadas a funciones
   int base = args[0];
   int exponente = args[1];
   // Identificamos el caso base
