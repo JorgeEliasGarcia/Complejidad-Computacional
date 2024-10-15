@@ -26,7 +26,7 @@ class Pila {
   Pila() {};
   
   // Devolverá la cima de la pila
-  Simbolo Cima() const { return pila_[pila_.size() - 1]; };
+  Simbolo GetCima() const { return pila_[pila_.size() - 1]; };
 
   // Añadir solo un símbolo a la pila
   void AnadirSimbolo(const Simbolo& simbolo) { pila_.push_back(simbolo); };

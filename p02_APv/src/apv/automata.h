@@ -18,11 +18,38 @@
 #define AUTOMATA_H
 
 #include "alfabeto.h"
-#include "transicion.h"
+#include "estado.h"
 #include "pila.h"
+#include <fstream>
+#include <sstream>
+#include <map> 
 
 class Automata {
+ public: 
+  // Constructor
+  Automata(const std::string& nombre_fichero, bool modo_traza); 
+  // Destructor
+  ~Automata() {};
 
+ private: 
+  Alfabeto alfabeto_;
+  std::vector<Estado> estados_;
+  Alfabeto alfabeto_pila_;
+  Pila pila_;
+  unsigned estado_inicial_; // Solo guardamos el índice del estado inicial
+  // Añadiremos un map, para poder trabajar con los estados por índices y no por nombre, pero poder mostrarlos en los resultados por nombre.  
+  std::map<std::string, unsigned> nombres_estados_;
+  void CrearMapNombresEstados(const std::string& linea_fichero);
+  // Reservamos tantos espacios para estados como estados encontremos
+  void ReservarEspaciosEstados(const std::string& linea_fichero);
+  // Finalmente, un booleano para saber si trabajamos en modo traza o no
+  bool modo_traza_;
+  // Añaadimos un método para comprobar que el estado es válido
+  void ComprobarEstadoValido(const std::string& nombre) const;
+  // Método para comprobar si el símbolo de arranque de la pila pertenece al alfabeto de la pila
+  void ComprobarSimboloArranquePila(const Simbolo& simbolo) const;
+  // Método para añadir las transiciones a los estados, comprobando que los símbolos pertenecen a los alfabetos correspondientes y los estados son válidos.
+  void AnadirTransiciones(const std::string& linea_fichero);
 }; 
 
 #endif 

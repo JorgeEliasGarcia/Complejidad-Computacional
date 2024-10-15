@@ -12,10 +12,16 @@
 
 */
 
-#include "apv/alfabeto.h"
-#include "apv/pila.h"
+#include "apv/automata.h"
+#include "main.h"
 
 int main(int argc, char* argv[]) { 
-  
+  ModoUso(argc, argv); 
+  // Leemos el nombre del fichero y el modo traza 
+  const std::string nombre_fichero = argv[1];
+  int modo_traza = std::stoi(argv[2]);
+  // Creamos el autómata
+  Automata automata(nombre_fichero, (modo_traza == 1));
+ 
   return 0; 
 }

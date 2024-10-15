@@ -18,5 +18,6 @@
 
 // Función para determinar si se puede aplicar una transición
 bool Transicion::TransicionValida(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila) const {
-  return (simbolo_ == simbolo && simbolo_cima_pila_ == simbolo_cima_pila); 
+  const Simbolo kEpsilon('.'); 
+  return ((simbolo_ == simbolo || simbolo_ == kEpsilon) && simbolo_cima_pila_ == simbolo_cima_pila); 
 }
