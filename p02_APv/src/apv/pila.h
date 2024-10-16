@@ -34,6 +34,16 @@ class Pila {
   // Actualizamos la pila. 
   void ActualizarPila(const std::vector<Simbolo>& simbolos);
 
+  // Comprobamos si está vacía
+  bool Vacia() const; 
+
+  void MostrarPila() const {
+    for (const Simbolo& simbolo : pila_) {
+      std::cout << simbolo.GetSimbolo();
+    }
+    std::cout << std::endl;
+  }
+
  private: 
   std::vector<Simbolo> pila_;
 }; 

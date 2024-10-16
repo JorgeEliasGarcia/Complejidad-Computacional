@@ -18,6 +18,7 @@
 #define AUTOMATA_H
 
 #include "alfabeto.h"
+#include "cadena.h"
 #include "estado.h"
 #include "pila.h"
 #include <fstream>
@@ -30,6 +31,9 @@ class Automata {
   Automata(const std::string& nombre_fichero, bool modo_traza); 
   // Destructor
   ~Automata() {};
+
+  // Método para comprobar si una cadena es aceptada por el autómata. Recibimos una copia, ya que la cadena se irá modificando.
+  bool CadenaPerteneceAlLenguaje(Cadena cadena);
 
  private: 
   Alfabeto alfabeto_;

@@ -4,7 +4,7 @@ LDFLAGS =
 
 all: automata
 
-automata: main.o funciones_main.o apv/simbolo.o apv/alfabeto.o apv/pila.o apv/transicion.o apv/estado.o apv/automata.o 
+automata: main.o funciones_main.o apv/simbolo.o apv/cadena.o apv/alfabeto.o apv/pila.o apv/transicion.o apv/estado.o apv/automata.o 
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: all clean

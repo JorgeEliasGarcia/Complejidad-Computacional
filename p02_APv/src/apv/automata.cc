@@ -63,6 +63,34 @@ Automata::Automata(const std::string& nombre_fichero, bool modo_traza) {
   } 
 }; 
 
+// Método para comprobar si una cadena es aceptada por el autómata. Recibimos una copia, ya que la cadena se irá modificando.
+bool Automata::CadenaPerteneceAlLenguaje(Cadena cadena) {
+  std::vector<unsigned> estados_pendientes; 
+  Estado estado_actual = estados_[estado_inicial_];
+  while (!(cadena.EsCadenaVacia() && pila_.Vacia())) {
+    if (cadena.EsCadenaVacia()) { //  AÑADIR ESTADOS PENDIENTESSSSS!!!!!!
+      cadena.MostrarCadena(); 
+      pila_.MostrarPila();
+      return false;
+    }
+    std::vector<Transicion> transiciones = estado_actual.TransicionesValidas(cadena.ObtenerSimboloActual(), pila_.GetCima());
+    Transicion transicion = transiciones[0]; 
+    // Aplicamos la transicion y actualizamos la cadena
+    /*
+    cadena.MostrarCadena(); 
+    pila_.MostrarPila(); 
+    std::cout << std::endl; 
+    std::cout << "Nos vamos a: " << transicion.GetEstadoDestino() << std::endl;*/
+    estado_actual = estados_[transicion.GetEstadoDestino()]; // Actualizamos el estado actual
+    pila_.ActualizarPila(transicion.GetNuevosSimbolosPila()); // Actualizamos la pila
+    cadena.EliminarPrimerSimbolo(); // Eliminamos el primer símbolo de la cadena
+  }
+
+  cadena.MostrarCadena(); 
+  pila_.MostrarPila();
+  return true; 
+}
+
 // Método para añadir las transiciones a los estados, comprobando que los símbolos pertenecen a los alfabetos correspondientes y los estados son válidos.
 void Automata::AnadirTransiciones(const std::string& linea_fichero) {
   const char kEpsilon('.'); 

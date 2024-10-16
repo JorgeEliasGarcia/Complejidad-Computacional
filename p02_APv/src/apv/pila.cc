@@ -18,8 +18,18 @@
 
 // Actualizar la pila del automata siginificará eliminar el último símbolo de la pila y añadir los nuevos símbolos.
 void Pila::ActualizarPila(const std::vector<Simbolo>& simbolos) {
+  const Simbolo kEpsilon('.');
+  if (simbolos.size() == 1 && simbolos[0] == kEpsilon) {
+    return;
+  }
   pila_.pop_back(); // Eliminamos el último símbolo de la pila
   for (int i = simbolos.size() - 1; i >= 0; --i) {
     pila_.push_back(simbolos[i]);
   }
+}
+
+// Comprobamos si la pila está vacía
+bool Pila::Vacia() const {
+  const Simbolo kEpsilon('.');
+  return (pila_.size() == 1 && pila_[0] == kEpsilon);
 }
