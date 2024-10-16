@@ -63,26 +63,37 @@ Automata::Automata(const std::string& nombre_fichero, bool modo_traza) {
   } 
 }; 
 
-// Método para comprobar si una cadena es aceptada por el autómata. Recibimos una copia, ya que la cadena se irá modificando.
-bool Automata::CadenaPerteneceAlLenguaje(Cadena cadena) {
-  std::vector<unsigned> estados_pendientes; 
-  Estado estado_actual = estados_[estado_inicial_];
-  while (!(cadena.EsCadenaVacia() && pila_.Vacia())) {
-    if (cadena.EsCadenaVacia()) { //  AÑADIR ESTADOS PENDIENTESSSSS!!!!!!
-      return false;
+// Método para comprobar si una cadena es aceptada por el autómata. 
+bool Automata::CadenaPerteneceAlLenguaje(const Cadena& cadena) const {
+  Pila pila_aux(pila_); // Creamos una copia de la pila, con el símbolo de arranque
+  return ExaminarCadenaRecursivo(cadena, estado_inicial_, pila_aux, 0);
+}
+
+// Método privado y recursivo para examinar si la cadena pertenece al lenguaje. Usaremos la recursividad para examinar todos los caminos posibles.
+bool Automata::ExaminarCadenaRecursivo(const Cadena& cadena, unsigned indice_estado, const Pila& pila, unsigned pos_cadena) const {
+  const Simbolo kEpsilon('.'); // Lo definimos como constante para no tener que hacerlo en cada iteración
+  // Determinamos el símbolo actual de la pila y de la cadena
+  const Simbolo kSimboloActual = (cadena.EsCadenaVacia()) ? kEpsilon : cadena.ObtenerSimbolo(pos_cadena);
+  const Simbolo kSimboloPilaActual = (pila.Vacia()) ? kEpsilon : pila.GetCima(); 
+  if (pos_cadena == cadena.NumeroSimbolos() && pila.Vacia()) { // Caso Base. Hemos recorrido toda la cadena y la pila está vacía --> Cadena aceptada
+    return true;  
+  }
+  // Determinamos todas las transiciones posibles desde el estado actual
+  std::vector<Transicion> transiciones = estados_[indice_estado].TransicionesValidas(kSimboloActual, kSimboloPilaActual);
+  // Recorremos todas las transiciones posibles y llamamos recursivamente a la función, para así examinar todos los caminos posibles.
+  for (const auto& transicion : transiciones) {
+    // Creamos una nueva pila, para poder recordar como estaba la pila antes de realizar la transición, por si tenemos que deshacer el camino. 
+    Pila pila_nueva(pila);
+    pila_nueva.ActualizarPila(transicion.GetNuevosSimbolosPila());
+    // Avanzamos en la posición de la cadena, siempre y cuando el símbolo utilizado por la transición no haya sido epsilon
+    unsigned nueva_pos_cadena = (transicion.GetSimboloNecesario() == kEpsilon) ? pos_cadena : pos_cadena + 1;
+    // Llamamos recursivamente a la función
+    if (ExaminarCadenaRecursivo(cadena, transicion.GetEstadoDestino(), pila_nueva, nueva_pos_cadena)) {
+      return true; 
     }
-    std::vector<Transicion> transiciones = estado_actual.TransicionesValidas(cadena.ObtenerSimboloActual(), pila_.GetCima());
-    if (transiciones.size() == 0) { // No se ha encontrado una transición válida. 
-      return false;
-    }
-    Transicion transicion = transiciones[0]; 
-    // Aplicamos la transicion y actualizamos la cadena
-    estado_actual = estados_[transicion.GetEstadoDestino()]; // Actualizamos el estado actual
-    pila_.ActualizarPila(transicion.GetNuevosSimbolosPila()); // Actualizamos la pila
-    cadena.EliminarPrimerSimbolo(); // Eliminamos el primer símbolo de la cadena
   }
 
-  return true; 
+  return false; // No hemos encontrado ningún camino posible. 
 }
 
 // Método para añadir las transiciones a los estados, comprobando que los símbolos pertenecen a los alfabetos correspondientes y los estados son válidos.

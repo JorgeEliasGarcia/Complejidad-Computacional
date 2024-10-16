@@ -25,20 +25,10 @@ Cadena::Cadena(const std::string& cadena) {
 
 // Método para eliminar el primer símbolo de la cadena. Si la cadena está vacía, añadiremos un símbolo epsilon.
 void Cadena::EliminarPrimerSimbolo() {
-  const Simbolo kEpsilon('.'); 
-  if (cadena_.size() == 1 && cadena_[0] == kEpsilon) { // Para nosotros, solo tener epsilon es tener la cadena ya vacía
-    return;
-  } else {
-    if (cadena_.size() == 1) { // Borramos el único elemento y añadimos epsilon
-      cadena_[0] = kEpsilon;
-    } else {
-      cadena_.erase(cadena_.begin());
-    }
-  }
+  cadena_.erase(cadena_.begin());
 }
 
 // Método para comprobar si la cadena está vacía
 bool Cadena::EsCadenaVacia() const {
-  const Simbolo kEpsilon('.');
-  return (cadena_.size() == 1 && cadena_[0] == kEpsilon);
+  return (cadena_.size() == 0);
 }

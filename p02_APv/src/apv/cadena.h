@@ -28,11 +28,14 @@ class Cadena {
   // Método para eliminar el primer símbolo de la cadena. 
   void EliminarPrimerSimbolo();
   
+  // Método para identificar el número de símbolos de la cadena
+  unsigned NumeroSimbolos() const { return cadena_.size(); }
+
+  // Gettr de un símbolo de la cadena
+  Simbolo ObtenerSimbolo(unsigned indice) const { return cadena_[indice]; }
+  
   // Método para combprobar si la cadena está vacía
   bool EsCadenaVacia() const;
-  
-  // Método para obtener el primer símbolo de la cadena
-  Simbolo ObtenerSimboloActual() const { return cadena_[0]; }
 
  private: 
   std::vector<Simbolo> cadena_;

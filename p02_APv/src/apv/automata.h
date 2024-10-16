@@ -31,9 +31,9 @@ class Automata {
   Automata(const std::string& nombre_fichero, bool modo_traza); 
   // Destructor
   ~Automata() {};
-
-  // Método para comprobar si una cadena es aceptada por el autómata. Recibimos una copia, ya que la cadena se irá modificando.
-  bool CadenaPerteneceAlLenguaje(Cadena cadena);
+  
+  // Método para comprobar si una cadena es aceptada por el autómata
+  bool CadenaPerteneceAlLenguaje(const Cadena& cadena) const;
 
  private: 
   Alfabeto alfabeto_;
@@ -54,6 +54,8 @@ class Automata {
   void ComprobarSimboloArranquePila(const Simbolo& simbolo) const;
   // Método para añadir las transiciones a los estados, comprobando que los símbolos pertenecen a los alfabetos correspondientes y los estados son válidos.
   void AnadirTransiciones(const std::string& linea_fichero);
+  // Método para comprobar si una cadena es aceptada por el autómata utilizando la recursividad para examinar todos los caminos.  
+  bool ExaminarCadenaRecursivo(const Cadena& cadena, unsigned inidice_estado, const Pila& pila, unsigned pos_cadena) const;
 }; 
 
 #endif 

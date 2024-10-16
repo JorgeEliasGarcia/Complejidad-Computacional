@@ -23,16 +23,21 @@ int main(int argc, char* argv[]) {
   int modo_traza = std::stoi(argv[2]);
   // Creamos el autómata
   Automata automata(nombre_fichero, (modo_traza == 1));
-  // Leemos la cadena
+  // Vamos leyendo cadenas hasta que introduzca "FIN" y comprobamos si pertenecen al lenguaje
+  std::cout << "Introduce una cadena o * para terminar: ";
   std::string cadena;
-  std::cout << "Introduce la cadena: ";
-  std::cin >> cadena;
-  Cadena cadena_obj(cadena);
-  // Comprobamos si la cadena pertenece al lenguaje
-  if (automata.CadenaPerteneceAlLenguaje(cadena_obj)) {
-    std::cout << "La cadena pertenece al lenguaje" << std::endl;
-  } else {
-    std::cout << "La cadena no pertenece al lenguaje" << std::endl;
+  while (true) {
+    std::cin >> cadena;
+    if (cadena == "*") {
+      break;
+    }
+    Cadena cadena_obj(cadena);
+    if (automata.CadenaPerteneceAlLenguaje(cadena_obj)) {
+      std::cout << "La cadena " << cadena << " SÍ pertenece al lenguaje" << std::endl << std::endl;
+    } else {
+      std::cout << "La cadena " << cadena << " NO pertenece al lenguaje" << std::endl << std::endl;
+    }
+    std::cout << "Nueva cadena: "; 
   }
 
   return 0; 
