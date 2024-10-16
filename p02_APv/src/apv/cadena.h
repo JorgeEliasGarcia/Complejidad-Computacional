@@ -34,13 +34,6 @@ class Cadena {
   // Método para obtener el primer símbolo de la cadena
   Simbolo ObtenerSimboloActual() const { return cadena_[0]; }
 
-  void MostrarCadena() const {
-    for (const Simbolo& simbolo : cadena_) {
-      std::cout << simbolo.GetSimbolo();
-    }
-    std::cout << std::endl;
-  }
-
  private: 
   std::vector<Simbolo> cadena_;
 }; 

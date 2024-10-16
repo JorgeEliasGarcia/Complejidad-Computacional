@@ -16,20 +16,20 @@
 
 #include "pila.h"
 
-// Actualizar la pila del automata siginificará eliminar el último símbolo de la pila y añadir los nuevos símbolos.
+// Actualizar la pila del automata siginificará eliminar el último símbolo de la pila y añadir los nuevos símbolos. Si es epsilon, no añadimos nada.
 void Pila::ActualizarPila(const std::vector<Simbolo>& simbolos) {
   const Simbolo kEpsilon('.');
-  if (simbolos.size() == 1 && simbolos[0] == kEpsilon) {
-    return;
+  if (pila_.size() > 0) {
+    pila_.pop_back(); // Eliminamos el último símbolo de la pila
   }
-  pila_.pop_back(); // Eliminamos el último símbolo de la pila
   for (int i = simbolos.size() - 1; i >= 0; --i) {
-    pila_.push_back(simbolos[i]);
+    if (simbolos[i] != kEpsilon) {
+      pila_.push_back(simbolos[i]); // Añadimos los nuevos símbolos a la pila
+    }
   }
 }
 
 // Comprobamos si la pila está vacía
 bool Pila::Vacia() const {
-  const Simbolo kEpsilon('.');
-  return (pila_.size() == 1 && pila_[0] == kEpsilon);
+  return (pila_.size() == 0);
 }

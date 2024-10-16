@@ -69,25 +69,19 @@ bool Automata::CadenaPerteneceAlLenguaje(Cadena cadena) {
   Estado estado_actual = estados_[estado_inicial_];
   while (!(cadena.EsCadenaVacia() && pila_.Vacia())) {
     if (cadena.EsCadenaVacia()) { //  AÑADIR ESTADOS PENDIENTESSSSS!!!!!!
-      cadena.MostrarCadena(); 
-      pila_.MostrarPila();
       return false;
     }
     std::vector<Transicion> transiciones = estado_actual.TransicionesValidas(cadena.ObtenerSimboloActual(), pila_.GetCima());
+    if (transiciones.size() == 0) { // No se ha encontrado una transición válida. 
+      return false;
+    }
     Transicion transicion = transiciones[0]; 
     // Aplicamos la transicion y actualizamos la cadena
-    /*
-    cadena.MostrarCadena(); 
-    pila_.MostrarPila(); 
-    std::cout << std::endl; 
-    std::cout << "Nos vamos a: " << transicion.GetEstadoDestino() << std::endl;*/
     estado_actual = estados_[transicion.GetEstadoDestino()]; // Actualizamos el estado actual
     pila_.ActualizarPila(transicion.GetNuevosSimbolosPila()); // Actualizamos la pila
     cadena.EliminarPrimerSimbolo(); // Eliminamos el primer símbolo de la cadena
   }
 
-  cadena.MostrarCadena(); 
-  pila_.MostrarPila();
   return true; 
 }
 
