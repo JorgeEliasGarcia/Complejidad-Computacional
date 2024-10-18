@@ -23,6 +23,18 @@ Cadena::Cadena(const std::string& cadena) {
   }
 }
 
+// Método para devolver la cadena, desde el índice indicado hasta el final  
+Cadena Cadena::Subcadena(unsigned indice) const {
+  Cadena subcadena;
+  for (unsigned i = indice; i < cadena_.size(); i++) {
+    subcadena.cadena_.push_back(cadena_[i]);
+  }
+  if (subcadena.EsCadenaVacia()) {
+    subcadena.cadena_.push_back(Simbolo('.'));
+  }
+  return subcadena;
+}
+
 // Método para eliminar el primer símbolo de la cadena. Si la cadena está vacía, añadiremos un símbolo epsilon.
 void Cadena::EliminarPrimerSimbolo() {
   cadena_.erase(cadena_.begin());
@@ -31,4 +43,12 @@ void Cadena::EliminarPrimerSimbolo() {
 // Método para comprobar si la cadena está vacía
 bool Cadena::EsCadenaVacia() const {
   return (cadena_.size() == 0);
+}
+
+// Sobreescritura del operador de salida
+std::ostream& operator<<(std::ostream& os, const Cadena& cadena) {
+  for (const Simbolo& simbolo : cadena.ObtenerCadena()) {
+    os << simbolo.GetSimbolo();
+  }
+  return os;
 }

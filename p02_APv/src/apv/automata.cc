@@ -27,6 +27,7 @@ Automata::Automata(const std::string& nombre_fichero, bool modo_traza) {
   }
   std::string linea;
   unsigned linea_actual{0}; 
+  unsigned transiciones_leidas{0};
   while (std::getline(fichero, linea)) {
     if (linea[0] == '#') {
       continue;
@@ -52,7 +53,8 @@ Automata::Automata(const std::string& nombre_fichero, bool modo_traza) {
         break;
       case 5: // Leemos todas transiciones
         do {
-          AnadirTransiciones(linea);
+          AnadirTransiciones(linea, transiciones_leidas);
+          ++transiciones_leidas;
         } while (std::getline(fichero, linea)); 
         break; 
 
@@ -75,11 +77,15 @@ bool Automata::ExaminarCadenaRecursivo(const Cadena& cadena, unsigned indice_est
   // Determinamos el símbolo actual de la pila y de la cadena
   const Simbolo kSimboloActual = (cadena.EsCadenaVacia()) ? kEpsilon : cadena.ObtenerSimbolo(pos_cadena);
   const Simbolo kSimboloPilaActual = (pila.Vacia()) ? kEpsilon : pila.GetCima(); 
+  // Determinamos todas las transiciones posibles desde el estado actual
+  std::vector<Transicion> transiciones = estados_[indice_estado].TransicionesValidas(kSimboloActual, kSimboloPilaActual);
+  // Estudiamos si estamos en modo traza
+  if (modo_traza_) {
+    MostrarTraza(cadena, pos_cadena, indice_estado, pila, transiciones);
+  }
   if (pos_cadena == cadena.NumeroSimbolos() && pila.Vacia()) { // Caso Base. Hemos recorrido toda la cadena y la pila está vacía --> Cadena aceptada
     return true;  
   }
-  // Determinamos todas las transiciones posibles desde el estado actual
-  std::vector<Transicion> transiciones = estados_[indice_estado].TransicionesValidas(kSimboloActual, kSimboloPilaActual);
   // Recorremos todas las transiciones posibles y llamamos recursivamente a la función, para así examinar todos los caminos posibles.
   for (const auto& transicion : transiciones) {
     // Creamos una nueva pila, para poder recordar como estaba la pila antes de realizar la transición, por si tenemos que deshacer el camino. 
@@ -96,8 +102,21 @@ bool Automata::ExaminarCadenaRecursivo(const Cadena& cadena, unsigned indice_est
   return false; // No hemos encontrado ningún camino posible. 
 }
 
+// Método para mostrar la información de la traza
+void Automata::MostrarTraza(const Cadena& cadena, unsigned indice_cadena, unsigned indice_estado, const Pila& pila, const std::vector<Transicion>& transiciones) const {
+  std::cout <<  "Estado: " << estados_[indice_estado].GetNombre() << std::endl;
+  std::cout << "Cadena: " << cadena.Subcadena(indice_cadena) << std::endl;
+  std::cout << "Pila: " << pila << std::endl;
+  std::cout << "Transiciones posibles: "; 
+  for (const Transicion& transicion : transiciones) {
+    std::cout << transicion.GetId() + 1 << " ";
+  }
+
+  std::cout << std::endl << "-----------------------------------------------------" << std::endl << std::endl;
+}
+
 // Método para añadir las transiciones a los estados, comprobando que los símbolos pertenecen a los alfabetos correspondientes y los estados son válidos.
-void Automata::AnadirTransiciones(const std::string& linea_fichero) {
+void Automata::AnadirTransiciones(const std::string& linea_fichero, unsigned transiciones_leidas) {
   const char kEpsilon('.'); 
   std::istringstream datos(linea_fichero);
   std::string nombre_estado; // Identificamos en qué estado estamos
@@ -135,7 +154,8 @@ void Automata::AnadirTransiciones(const std::string& linea_fichero) {
     simbolos_pila_nuevo_obj.push_back(Simbolo(simbolo));
   }
   // Añadimos la transición al estado correspondiente
-  estados_[indice_estado].AnadirTransicion(Transicion(simbolo_necesario_obj, simbolo_pila_obj, indice_estado_destino, simbolos_pila_nuevo_obj));
+  estados_[indice_estado].AnadirTransicion(Transicion(simbolo_necesario_obj, simbolo_pila_obj, indice_estado_destino, simbolos_pila_nuevo_obj, transiciones_leidas));
+  estados_[indice_estado].SetNombre(nombre_estado);
 }
 
 // Método para comprobar que el estado es válido

@@ -53,9 +53,11 @@ class Automata {
   // Método para comprobar si el símbolo de arranque de la pila pertenece al alfabeto de la pila
   void ComprobarSimboloArranquePila(const Simbolo& simbolo) const;
   // Método para añadir las transiciones a los estados, comprobando que los símbolos pertenecen a los alfabetos correspondientes y los estados son válidos.
-  void AnadirTransiciones(const std::string& linea_fichero);
+  void AnadirTransiciones(const std::string& linea_fichero, unsigned transiciones_leidas);
   // Método para comprobar si una cadena es aceptada por el autómata utilizando la recursividad para examinar todos los caminos.  
   bool ExaminarCadenaRecursivo(const Cadena& cadena, unsigned inidice_estado, const Pila& pila, unsigned pos_cadena) const;
+  // Método para mostrar la información de la traza
+  void MostrarTraza(const Cadena& cadena, unsigned indice_cadena, unsigned indice_estado, const Pila& pila, const std::vector<Transicion>&) const;
 }; 
 
 #endif 

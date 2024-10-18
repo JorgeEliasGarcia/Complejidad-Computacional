@@ -22,7 +22,11 @@
 class Estado {
  public: 
   // Constructor por defecto
-  Estado() {}; 
+  Estado() : nombre_("") {}; 
+  
+  // Getter y setter del nombre del estado
+  std::string GetNombre() const {return nombre_;};
+  void SetNombre(const std::string& nombre) {nombre_ = nombre;};
 
   // Añadimos una transición al estado
   void AnadirTransicion(const Transicion& transicion) {transiciones_.push_back(transicion);};
@@ -39,6 +43,7 @@ class Estado {
 
  private: 
   std::vector<Transicion> transiciones_;
+  std::string nombre_; 
 }; 
 
 #endif 

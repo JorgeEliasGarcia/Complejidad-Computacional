@@ -31,6 +31,9 @@ class Pila {
   // Añadir solo un símbolo a la pila
   void AnadirSimbolo(const Simbolo& simbolo) { pila_.push_back(simbolo); };
 
+  // Devolvemos la pila
+  std::vector<Simbolo> GetPila() const {return pila_;};
+
   // Actualizamos la pila. 
   void ActualizarPila(const std::vector<Simbolo>& simbolos);
 
@@ -40,5 +43,8 @@ class Pila {
  private: 
   std::vector<Simbolo> pila_;
 }; 
+
+// Sobreescritura del operador de salida
+std::ostream& operator<<(std::ostream& os, const Pila& pila);
 
 #endif 

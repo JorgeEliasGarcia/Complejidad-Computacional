@@ -23,14 +23,15 @@
 class Transicion {
  public: 
   //Constructor
-  Transicion(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila, const unsigned int estado_destino, const std::vector<Simbolo>& nuevos_simbolos_pila) :
-   simbolo_{simbolo}, simbolo_cima_pila_{simbolo_cima_pila}, nuevos_simbolos_pila_{nuevos_simbolos_pila}, estado_destino_{estado_destino} {};
+  Transicion(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila, const unsigned int estado_destino, const std::vector<Simbolo>& nuevos_simbolos_pila, unsigned id) :
+   simbolo_{simbolo}, simbolo_cima_pila_{simbolo_cima_pila}, nuevos_simbolos_pila_{nuevos_simbolos_pila}, estado_destino_{estado_destino}, id_{id} {};
 
   // Getter
   unsigned int GetEstadoDestino() const {return estado_destino_;};
   std::vector<Simbolo> GetNuevosSimbolosPila() const {return nuevos_simbolos_pila_;};
   Simbolo GetSimboloNecesario() const {return simbolo_;};
   Simbolo GetSimboloCimaPila() const {return simbolo_cima_pila_;};
+  unsigned GetId() const {return id_;};
   
   // Función para determinar si se puede aplicar una transición
   bool TransicionValida(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila) const;
@@ -40,6 +41,8 @@ class Transicion {
   Simbolo simbolo_cima_pila_; 
   std::vector<Simbolo> nuevos_simbolos_pila_; 
   unsigned int estado_destino_;
+  // Añadimos un id para mostrar la información en el modo traza del automata
+  unsigned id_; 
 }; 
 
 #endif 

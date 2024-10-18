@@ -33,3 +33,14 @@ void Pila::ActualizarPila(const std::vector<Simbolo>& simbolos) {
 bool Pila::Vacia() const {
   return (pila_.size() == 0);
 }
+
+// Sobreescritura del operador de salida
+std::ostream& operator<<(std::ostream& os, const Pila& pila) {
+  for (const Simbolo& simbolo : pila.GetPila()) {
+    os << simbolo.GetSimbolo();
+  }
+  if (pila.Vacia()) {
+    os << '.';
+  }
+  return os;
+}
