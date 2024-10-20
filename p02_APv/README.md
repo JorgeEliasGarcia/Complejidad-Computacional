@@ -2,6 +2,11 @@
 
 Para esta práctica, se implementará un simulador de un automáta con pila, concretamente **por vaciado de pila (APv)**. 
 
+## Compilación y Ejecución del Programa
+
+Para compilar el programa, simplemente nos adentramos en el directorio src y hacemos ***make***. 
+Para ejecutar el programa, haremos: ./automata <fichero> <modo_traza>. Para ello, los ficheros se encuentran el directorio test. Por otro lado, respecto al modo traza, en caso de poner un 1, se ejecutará en dicho modo. En caso de poner cualquier otro caracter, no se entrará en el modo traza. 
+
 ## Automáta
 
 Para poder implementar el automata por vaciado de pila, se ha codificado, entre otras muchas, la clase Automata. Esta clase nos permitirá definir un automata y, posteriormente, examinar cadenas y comprobar si pertenecen al lenguaje reconocido por el automata o no. 
@@ -24,6 +29,10 @@ El procedimiento para examinar las cadenas ha sido el siguiente:
 En primer lugar, encontramos el caso base, el cual nos dice que si hemos recorrido toda la cadena y la pila está vacía, la cadena pertenece al lenguaje reconocido por el automata. Por lo tanto, retornamos true. 
 
 En segundo lugar, encontramos el caso recursivo. Por lo tanto, identificamos todas las transiciones posibles, atendiendo al estado actual, al símbolo actual de la cadena y al símbolo en la cima de la pila. A continuación, recorremos todas las transiciones y llamamos recursivamente a la función, para así examinar todos los caminos posibles. Para cada transición, creamos una nueva pila (partiendo de la pila actual) y la actualizamos, eliminando el símbolo que se encuentre en la cima y añadiendo los símbolos que nos inidique la transición. Posteriormente, actualizamos el ínidice de la cadena (damos como leído dicho símbolo) y llamamos recursivamente a la función, pasando como argumentos: La cadena actualizada (cadena original y el ínidice donde nos encontramos), el estado destino y la nueva pila. Consecuentemente, al adentrarnos en esta llamda, habremos realizado correctamente la transición, ya que nos encontraremos en el estado destino, con el símbolo de la cadena y la pila actualizadas correctamente. 
+
+### Modo traza
+
+Asimismo, encontramos la opción de ejecutar el programa en modo traza. En este modo, para cada iteración mostramos el estado actual, la cadena (los símbolos que hayan sido leidos, no se mostrarán, por lo que vamos mostrando "subcadenas"), la pila y todas las transiciones posibles. Para mostrar las transiciones, **a cada una se le ha asignado un ID**, el cual corresponde al orden en el que fueron definidas. Es decir, la primera transición definida será el ID 1 y así sucesivamente. 
 
 ## Estructura de Clases
 
