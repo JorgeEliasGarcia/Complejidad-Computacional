@@ -28,9 +28,6 @@ class Cadena {
   
   // Getter 
   std::vector<Simbolo> ObtenerCadena() const { return cadena_; }
-
-  // Método para eliminar el primer símbolo de la cadena. 
-  void EliminarPrimerSimbolo();
   
   // Método para devolver la cadena, desde el índice indicado hasta el final
   Cadena Subcadena(unsigned indice) const;

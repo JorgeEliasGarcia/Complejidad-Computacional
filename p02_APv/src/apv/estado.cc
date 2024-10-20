@@ -16,16 +16,6 @@
 
 #include "estado.h"
 
-// Comprobamos si existe alguna transición que se pueda aplicar
-bool Estado::ExisteTransicion(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila) const {
-  for (const Transicion& transicion : transiciones_) {
-    if (transicion.TransicionValida(simbolo, simbolo_cima_pila)) {
-      return true; 
-    }
-  }
-  return false; 
-}
-
 // Devolvemos todas las transiciones que se pueden aplicar
 std::vector<Transicion> Estado::TransicionesValidas(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila) const {
   std::vector<Transicion> transiciones_validas; 

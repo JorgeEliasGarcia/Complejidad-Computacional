@@ -35,11 +35,6 @@ Cadena Cadena::Subcadena(unsigned indice) const {
   return subcadena;
 }
 
-// Método para eliminar el primer símbolo de la cadena. Si la cadena está vacía, añadiremos un símbolo epsilon.
-void Cadena::EliminarPrimerSimbolo() {
-  cadena_.erase(cadena_.begin());
-}
-
 // Método para comprobar si la cadena está vacía
 bool Cadena::EsCadenaVacia() const {
   return (cadena_.size() == 0);

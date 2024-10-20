@@ -23,3 +23,23 @@ void ModoUso(int argc, char *argv[]) {
     exit(EXIT_SUCCESS); 
   }
 }
+
+// Función para ir examinando cadenas
+void ExaminarCadenas(const Automata& automata) {
+  // Vamos leyendo cadenas hasta que introduzca "*" y comprobamos si pertenecen al lenguaje
+  std::cout << "Introduce una cadena o * para terminar: ";
+  std::string cadena;
+  while (true) {
+    std::cin >> cadena;
+    if (cadena == "*") {
+      break;
+    }
+    Cadena cadena_obj(cadena);
+    if (automata.CadenaPerteneceAlLenguaje(cadena_obj)) {
+      std::cout << "La cadena " << cadena << " SÍ pertenece al lenguaje" << std::endl << std::endl;
+    } else {
+      std::cout << "La cadena " << cadena << " NO pertenece al lenguaje" << std::endl << std::endl;
+    }
+    std::cout << "Nueva cadena: "; 
+  }
+}

@@ -31,9 +31,6 @@ class Estado {
   // Añadimos una transición al estado
   void AnadirTransicion(const Transicion& transicion) {transiciones_.push_back(transicion);};
 
-  // Comprobamos si existe alguna transición que se pueda aplicar
-  bool ExisteTransicion(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila) const;
-
   // Devolvemos todas las transiciones que se pueden aplicar 
   std::vector<Transicion> TransicionesValidas(const Simbolo& simbolo, const Simbolo& simbolo_cima_pila) const;
 

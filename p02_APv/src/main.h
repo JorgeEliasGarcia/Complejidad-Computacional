@@ -16,8 +16,13 @@
 #define MAIN_H
 
 #include <iostream>
+#include "apv/automata.h"
+#include "apv/cadena.h"
 
 // Función para asegurarse de que el número de argumentos es correcto
 void ModoUso(int argc, char *argv[]);
+
+// Función para ir examinando cadenas
+void ExaminarCadenas(const Automata& automata);
 
 #endif 

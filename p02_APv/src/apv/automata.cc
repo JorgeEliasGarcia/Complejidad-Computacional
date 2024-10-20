@@ -73,7 +73,7 @@ bool Automata::CadenaPerteneceAlLenguaje(const Cadena& cadena) const {
 
 // Método privado y recursivo para examinar si la cadena pertenece al lenguaje. Usaremos la recursividad para examinar todos los caminos posibles.
 bool Automata::ExaminarCadenaRecursivo(const Cadena& cadena, unsigned indice_estado, const Pila& pila, unsigned pos_cadena) const {
-  const Simbolo kEpsilon('.'); // Lo definimos como constante para no tener que hacerlo en cada iteración
+  const Simbolo kEpsilon('.'); // Definimos la constante epsilon
   // Determinamos el símbolo actual de la pila y de la cadena
   const Simbolo kSimboloActual = (cadena.EsCadenaVacia()) ? kEpsilon : cadena.ObtenerSimbolo(pos_cadena);
   const Simbolo kSimboloPilaActual = (pila.Vacia()) ? kEpsilon : pila.GetCima(); 
