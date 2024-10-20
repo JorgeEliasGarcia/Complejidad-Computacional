@@ -5,6 +5,7 @@ Para esta práctica, se implementará un simulador de un automáta con pila, con
 ## Compilación y Ejecución del Programa
 
 Para compilar el programa, simplemente nos adentramos en el directorio src y hacemos ***make***. 
+
 Para ejecutar el programa, haremos: ./automata <nombre_fichero> <modo_traza>. Para ello, los ficheros se encuentran el directorio test. Por otro lado, respecto al modo traza, en caso de poner un 1, se ejecutará en dicho modo. En caso de poner cualquier otro caracter, no se entrará en el modo traza. 
 
 ## Automáta
@@ -14,6 +15,7 @@ Para poder implementar el automata por vaciado de pila, se ha codificado, entre 
 ### Atributos
 
 Al igual que sucede en la teoría, nuestro automata tiene como atributos privados: Un alfabeto, un conjunto de estados, el alfabeto de la pila, una pila (con un símbolo inicial) y un estado inicial. 
+
 Por otro lado, también hará uso de la clase Cadena, ya que recibirá objetos de esta clase, para examinar si las cadenas del usuario pertenecen al lenguaje reconocido por el automata o no. Asimismo, también utilizará la clase Transicion, para poder identificar que cambios realizar en cada iteración. 
 
 ### Comprobaciones
