@@ -4,7 +4,7 @@ LDFLAGS =
 
 all: mt
 
-mt: main.o funciones_main.o MT/simbolo.o MT/alfabeto.o
+mt: main.o funciones_main.o MT/simbolo.o MT/alfabeto.o MT/cadena.o MT/transicion.o  MT/cinta.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: all clean

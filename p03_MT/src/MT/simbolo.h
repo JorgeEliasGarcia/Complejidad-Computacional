@@ -25,6 +25,8 @@ class Simbolo {
   Simbolo (const char simbolo) : simbolo_{simbolo} {};
   //Constructor a partir de otro simbolo
   Simbolo(const Simbolo& simbolo);
+  // Constructor por defecto
+  Simbolo() = default;
 
   //Getter
   const char GetSimbolo() const {return simbolo_; }; 
